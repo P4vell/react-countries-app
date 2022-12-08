@@ -40,7 +40,7 @@ const App = () => {
             />
           }
         />
-        <Route path="react-countries-app/country/:name" element={<CountryPage />} />
+        <Route path="/react-countries-app/country/:name" element={<CountryPage />} />
       </Routes>
     </ThemeProvider>
   );
