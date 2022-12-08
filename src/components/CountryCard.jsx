@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CountryCard = ({ country }) => {
   return (
-    <Link to={`/country/${country.name.common}`}>
+    <Link to={`/react-countries-app/country/${country.name.common}`}>
       <div className="rounded-div bg-secondary w-full overflow-hidden">
         <div className="w-full h-[200px] md:h-[250px]">
           <img
