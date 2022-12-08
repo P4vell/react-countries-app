@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <header className="w-full h-22 px-4 py-6 flex items-center justify-between bg-secondary drop-shadow-md">
-      <Link to="/">
+      <Link to="/react-countries-app/">
         <h1 className="text-md font-bold">Where in the world?</h1>
       </Link>
 
