@@ -18,7 +18,7 @@ const Form = ({ countries }) => {
       return;
     }
 
-    navigate(`/country/${searchedCountry.name.common}`);
+    navigate(`/react-countries-app/country/${searchedCountry.name.common}`);
   };
 
   return (
