@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+import ThemeProvider from "./context/ThemeContext";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import CountryPage from "./pages/CountryPage";
 
-function App() {
+const App = () => {
+  const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
+
+  const API_URL = "https://restcountries.com/v3.1/all";
+
+  const filterCountries = (filter) => {
+    if (filter === "All") return setFilteredCountries(countries);
+    setFilteredCountries(
+      countries.filter((country) => country.region === filter)
+    );
+  };
+
+  useEffect(() => {
+    axios.get(API_URL).then((response) => {
+      setCountries(response.data);
+      setFilteredCountries(response.data);
+    });
+  }, [API_URL]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              countries={countries}
+              filteredCountries={filteredCountries}
+              filterCountries={filterCountries}
+            />
+          }
+        />
+        <Route path="/country/:name" element={<CountryPage />} />
+      </Routes>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
