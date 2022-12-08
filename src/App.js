@@ -31,7 +31,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="*/"
           element={
             <Home
               countries={countries}
@@ -40,7 +40,7 @@ const App = () => {
             />
           }
         />
-        <Route path="/country/:name" element={<CountryPage />} />
+        <Route path="*/country/:name" element={<CountryPage />} />
       </Routes>
     </ThemeProvider>
   );
